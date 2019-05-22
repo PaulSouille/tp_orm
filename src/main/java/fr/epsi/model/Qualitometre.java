@@ -1,10 +1,14 @@
 package fr.epsi.model;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
-public class Qualitometre {
+@Entity
+@Table(name = "qualitometre" ,indexes = @Index(columnList = "codeBSS"))
+public class Qualitometre implements Serializable {
+
 
     @Id
     @Column(unique = true)
@@ -19,13 +23,7 @@ public class Qualitometre {
     private List<Prelevement> prelevements;
 
 
-    public Qualitometre(long codeBSS, long latitude, long longitude, Date dateCreation, String commentaire) {
-        this.codeBSS = codeBSS;
-        this.latitude = latitude;
-        this.longitude = longitude;
-        this.dateCreation = dateCreation;
-        this.commentaire = commentaire;
-    }
+
 
     public long getCodeBSS() {
         return codeBSS;

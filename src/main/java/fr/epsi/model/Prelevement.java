@@ -1,9 +1,13 @@
 package fr.epsi.model;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
-public class Prelevement {
+@Entity
+@Table(name = "prelevement" ,indexes = @Index(columnList = "id"))
+public class Prelevement implements Serializable {
 
 
     @Id
@@ -16,10 +20,6 @@ public class Prelevement {
     @JoinColumn(name="qualitometre_id")
     private Qualitometre qualitometre;
 
-    public Prelevement(Date dateHeure, String commentaire) {
-        this.dateHeure = dateHeure;
-        this.commentaire = commentaire;
-    }
 
     public long getId() {
         return id;
@@ -44,4 +44,14 @@ public class Prelevement {
     public void setCommentaire(String commentaire) {
         this.commentaire = commentaire;
     }
+
+    public Qualitometre getQualitometre() {
+        return qualitometre;
+    }
+
+    public void setQualitometre(Qualitometre qualitometre) {
+        this.qualitometre = qualitometre;
+    }
+
+
 }

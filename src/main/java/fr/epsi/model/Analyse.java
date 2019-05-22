@@ -2,9 +2,13 @@ package fr.epsi.model;
 
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Date;
 
-public class Analyse {
+
+@Entity
+@Table(name = "analyse" ,indexes = @Index(columnList = "id"))
+public class Analyse implements Serializable {
 
 
     @Id
@@ -25,6 +29,9 @@ public class Analyse {
         this.resultat = resultat;
         this.paramPhysicoChimique = paramPhysicoChimique;
         this.prelevement = prelevement;
+    }
+
+    public Analyse() {
     }
 
     public long getId() {
