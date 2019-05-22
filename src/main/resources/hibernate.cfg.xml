@@ -14,7 +14,10 @@
         <property name="show_sql">true</property>
         <property name="current_session_context_class">thread</property>
 
-        <mapping class="fr.epsi.model.User"/>
+        <mapping class="fr.epsi.model.Qualitometre"/>
+        <mapping class="fr.epsi.model.Prelevement"/>
+        <mapping class="fr.epsi.model.ParamPhysicoChimique"/>
+        <mapping class="fr.epsi.model.Analyse"/>
 
     </session-factory>
 </hibernate-configuration>
