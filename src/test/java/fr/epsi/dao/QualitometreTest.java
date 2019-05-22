@@ -84,4 +84,15 @@ public class QualitometreTest {
         System.out.println(paramPhysicoChimique.getMostAnalysedParam(qualitometre));
     }
 
+    @Test
+    public void getAnalyseByDateSeuil(){
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(2019, Calendar.MAY, 15);
+        Calendar calendar2 = Calendar.getInstance();
+        calendar2.set(2019, Calendar.MAY, 28);
+        Analyse analyse = new Analyse();
+        ParamPhysicoChimique paramPhysicoChimique = new ParamPhysicoChimiqueDao().get(1);
+        System.out.println(analyse.getAnalysesByDateAndResultat(11,calendar.getTime(),calendar2.getTime(),paramPhysicoChimique));
+    }
+
 }

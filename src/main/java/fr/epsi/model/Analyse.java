@@ -1,9 +1,13 @@
 package fr.epsi.model;
 
 
+import fr.epsi.utils.HibernateUtil;
+import org.hibernate.Session;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 
 @Entity
@@ -72,5 +76,12 @@ public class Analyse implements Serializable {
 
     public void setPrelevement(Prelevement prelevement) {
         this.prelevement = prelevement;
+    }
+
+    public List<Analyse> getAnalysesByDateAndResultat(int resultat, Date dateStart, Date dateEnd,ParamPhysicoChimique paramPhysicoChimique){
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        List analyse = session.createSQLQuery("select * from analyse where "+dateStart+"< DATEHEURE, "+dateEnd+" >DATESTART, RESULTAT > "+resultat+" ,PARAMPHYSICOCHIMIQUE_ID = "+paramPhysicoChimique.getCode()).list();
+        return analyse;
+
     }
 }
